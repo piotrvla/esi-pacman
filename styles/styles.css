@@ -4,8 +4,8 @@
     border-radius: 10px;
     width:460px;
     font-family: 'Press Start 2P', cursive;
-    margin: auto;
-    padding: auto;
+
+
     
 }   
 #scores{
@@ -15,12 +15,14 @@
 }
 
 #game{
+    position:relative;
     width:420px;
     height: 465px;
     margin:auto;
-    
+    margin-bottom:30px;
 }
 #lifes{
+    margin-top: 15px;
     margin:15px;
     height: 20px;
     border: 5px solid darkblue;
@@ -31,4 +33,15 @@ h1{
     text-align: center;
     color:white;
     font-size: 15px;
+}
+.wall{
+    position:absolute;
+    border: 7.5px solid darkblue;
+
+}
+.pacdot{
+
+    border: 7.5px solid white;
+    border-radius: 99%;
+    position: absolute;
 }
