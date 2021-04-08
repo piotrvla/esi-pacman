@@ -1,5 +1,6 @@
 /**
- * 
+ * The game is represented as differents layers,
+ * 1 will contain every wall, second one every dot.
  */
 class Layer {
     /**
