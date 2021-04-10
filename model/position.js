@@ -4,8 +4,8 @@
 class Position{
     /**
      * To be created need a row and a column.
-     * @param {*} row row of the position in the game.
-     * @param {*} column column of the position in the game.
+     * @param {number} row row of the position in the game.
+     * @param {number} column column of the position in the game.
      */
     constructor(row, column){
         this._row=row;

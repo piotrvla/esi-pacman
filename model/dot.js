@@ -5,8 +5,8 @@ class Dot extends Tile {
     /**
      * To be created, dot needs unique id, and also
      * a boolean for isEnergizer
-     * @param {*} id unique id.
-     * @param {*} isEnergizer false if not energizer, else true.
+     * @param {string} id unique id.
+     * @param {boolean} isEnergizer false if not energizer, else true.
      */
     constructor(id, isEnergizer) {
         super(id);

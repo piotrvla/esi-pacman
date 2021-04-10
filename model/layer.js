@@ -17,13 +17,13 @@ class Layer {
     }
     /**
      * Verifies if the given position is inside the layer.
-     * @param {*} pos position to verify.
+     * @param {Position} pos position to verify.
      * @returns true if is inside, else false.
      */
     contains(pos) {
       
         return (pos.row >= 0 && pos.row < this._nbRows
-            && pos.column >= 0 && pos.column < this._nbColumns); w
+            && pos.column >= 0 && pos.column < this._nbColumns); 
     }
     /**
      * Puts a tile inside the board.

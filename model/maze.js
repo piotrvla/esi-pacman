@@ -13,10 +13,13 @@ class Maze {
         for (let i = 0; i < rawMaze.table.length; i++) {
             for (let j = 0; j < rawMaze.table[0].length; j++) {
                 if (rawMaze.table[i][j] == 1) {
-                    this._wallLayer.setTile(new Position(i, j), rawMaze.table[i][j]);
+                    this._wallLayer.setTile(new Position(i, j), new Wall("wall"));
                 }
-                else if (rawMaze.table[i][j] == 2 || rawMaze.table[i][j] == 3) {
-                    this._dotLayer.setTile(new Position(i, j), rawMaze.table[i][j]);
+                else if (rawMaze.table[i][j] == 2) {
+                    this._dotLayer.setTile(new Position(i, j), new Dot("dot",false));
+                }
+                else if(rawMaze.table[i][j] == 3){
+                    this._dotLayer.setTile(new Position(i, j), new Dot("energizer",true));
                 }
             }
         }
