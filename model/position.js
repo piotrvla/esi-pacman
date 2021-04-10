@@ -21,5 +21,12 @@ class Position{
      * @returns {number}
      */
     get column(){return this._column;}
-
+    /**
+     * Returns the next position of the spirit with the given direction .
+     * @param {*} dir Direction of the spirit.
+     * @returns Next position in the given direction.
+     */
+    nextPosition(dir){
+        return new Position(this._row+dir.deltaRow, this._column + dir.deltaColumn);
+    }
 }
