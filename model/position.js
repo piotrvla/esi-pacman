@@ -27,6 +27,6 @@ class Position{
      * @returns Next position in the given direction.
      */
     nextPosition(dir){
-        return new Position(this._row+dir.deltaRow, this._column + dir.deltaColumn);
+        return new Position(this._row + dir.deltaRow, this._column + dir.deltaColumn);
     }
 }
