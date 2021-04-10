@@ -4,7 +4,8 @@
 class Maze {
     /**
      * Creates 2 layers, wall layer also dot layer and fill them with their values.
-     * @param {*} rawMaze the whole maze.
+     * Needs rawMaze to be initialized.
+     * @param {*} rawMaze the raw maze.
      */
     constructor(rawMaze) {
         this._wallLayer = new Layer(rawMaze.table.length, rawMaze.table[0].length);

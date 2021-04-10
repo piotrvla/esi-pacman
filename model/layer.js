@@ -21,6 +21,7 @@ class Layer {
      * @returns true if is inside, else false.
      */
     contains(pos) {
+      
         return (pos.row >= 0 && pos.row < this._nbRows
             && pos.column >= 0 && pos.column < this._nbColumns); w
     }
