@@ -46,6 +46,41 @@ class Maze {
         return this._dotLayer.getTile(pos);
     }
     /**
+     * Verifies if the spirit can walk
+     * on the given position in the game or not.
+     * @param {Position} position Position to check
+     * @returns {Boolean} True if can walk on, false if not.
+     */
+    canWalkOn(position){
+        if(this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)){
+            return (true);
+        }
+        return false;
+        
+    }
+    /**
+     * Verifies if the dot can be pick at the given position.
+     * @param {Position} position Position to check.
+     * @returns {Boolean} True if can be picked, false if not.
+     */
+    canPick(position){
+        if(this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)){
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Pickes the tile at the given position.
+     * @param {Position} position 
+     * @returns {Tile} Tile at the given position.
+     */
+    pick(position){
+        if(this.canPick(position)){
+            return this.getDotLayerTile(position);
+        }
+        throw "Nothing to pick";
+    }
+    /**
      * We suppose that two layers are are of the same size,
      * then one of them is used to get the number of rows.
      * @returns number of rows of the layer.
