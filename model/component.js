@@ -1,9 +1,9 @@
 /**
- * Component represents an ingame object.
+ * A component represents an ingame object.
  */
 class Component {
      /**
-     * To be created, a Tile just need an id.
+     * To be created, a Component just need an id.
      *
      * @param {string} id unique tile's id
      */
@@ -12,6 +12,7 @@ class Component {
     }
 
     /**
+     * Returns the component's id.
      * @returns {string}
      */
     get id() { return this._id; }
