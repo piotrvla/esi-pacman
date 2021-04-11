@@ -45,7 +45,7 @@ class Sprite extends Component {
     changeDirection() {
         if (this._askedToChangeDirection) {
             this._direction = this._askedDirection;
-            this.askToChangeDirection=false;
+            this._askedToChangeDirection=false;
         }
     }
 
