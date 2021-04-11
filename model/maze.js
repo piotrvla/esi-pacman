@@ -16,11 +16,15 @@ class Maze {
                     this._wallLayer.setTile(new Position(i, j), new Wall("wall"));
                 }
                 else if (rawMaze.table[i][j] == 2) {
-                    this._dotLayer.setTile(new Position(i, j), new Dot("dot",false));
+                    this._dotLayer.setTile(new Position(i, j), new Dot("dot", false));
                 }
-                else if(rawMaze.table[i][j] == 3){
-                    this._dotLayer.setTile(new Position(i, j), new Dot("energizer",true));
+                else if (rawMaze.table[i][j] == 3) {
+                    this._dotLayer.setTile(new Position(i, j), new Dot("energizer", true));
                 }
+                else if (rawMaze.table[i][j] == 4) {
+                    this._pacmanRespawn = new Position(i, j);
+                }
+
             }
         }
 
@@ -39,7 +43,7 @@ class Maze {
      * Returns a dot layer's tile at given position.
      * @returns Tile at given position.
      */
-    getDotLayerTile(pos)    {
+    getDotLayerTile(pos) {
         if (!this._dotLayer.contains(pos)) {
             throw "Given position isn't inside the layer";
         }
@@ -51,20 +55,20 @@ class Maze {
      * @param {Position} position Position to check
      * @returns {Boolean} True if can walk on, false if not.
      */
-    canWalkOn(position){
-        if(this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)){
+    canWalkOn(position) {
+        if ( (this._dotLayer.contains(position) && !this._wallLayer.hasTile(position)) ||this._dotLayer.hasTile(position)) {
             return (true);
         }
         return false;
-        
+
     }
     /**
      * Verifies if the dot can be pick at the given position.
      * @param {Position} position Position to check.
      * @returns {Boolean} True if can be picked, false if not.
      */
-    canPick(position){
-        if(this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)){
+    canPick(position) {
+        if (this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)) {
             return true;
         }
         return false;
@@ -74,8 +78,8 @@ class Maze {
      * @param {Position} position 
      * @returns {Tile} Tile at the given position.
      */
-    pick(position){
-        if(this.canPick(position)){
+    pick(position) {
+        if (this.canPick(position)) {
             return this.getDotLayerTile(position);
         }
         throw "Nothing to pick";
@@ -92,4 +96,5 @@ class Maze {
     * @returns number of columns of the layer.
     */
     get nbColumns() { return this._dotLayer._nbColumns; }
+    get pacmanRespawn() { return this._pacmanRespawn; }
 }

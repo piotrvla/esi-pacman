@@ -1,7 +1,7 @@
 /**
  * The main point of visualizing the pacman.
  */
-class PacmanView {
+ class PacmanView {
     /**
      * Needs PacmanCtrl to be initialized.
      * @param {PacmanCtrl} pacmanCtrl 
@@ -14,11 +14,11 @@ class PacmanView {
              
                     break;
                 case "ArrowRight":
-                    pacmanCtrl.pacman.askToChangeDirection(Direction.EAST);
+                    pacmanCtrl.askToChangeDirection(Direction.EAST);
               
                     break;
                 case "ArrowUp":
-                    pacmanCtrl.pacman.askToChangeDirection(Direction.NORTH);
+                    pacmanCtrl.askToChangeDirection(Direction.NORTH);
                 
                     break;
                 case "ArrowDown":
@@ -31,4 +31,3 @@ class PacmanView {
 
     }
 }
-

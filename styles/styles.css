@@ -49,3 +49,8 @@ h1{
     border-radius: 99%;
     position: absolute;
 }
+.pacman{
+    border: 7.5px solid yellow;
+    border-radius: 99%;
+    position: absolute;
+}

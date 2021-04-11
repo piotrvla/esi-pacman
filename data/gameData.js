@@ -1,1 +1,2 @@
 const PACMAN_ID = "g56212";
+const RUN_INTERVAL = 300;

@@ -6,20 +6,28 @@ class GameView {
      * Need the game as parameter to be initialized.
      * @param {*} game 
      */
-    constructor(game) {
-        for (let i = 0; i < game.maze.nbRows; i++) {
-            for (let j = 0; j < game.maze.nbColumns; j++) {
+     constructor(game) {
+        this._game = game;
+        for (let i = 0; i < this._game.maze.nbRows; i++) {
+            for (let j = 0; j < this._game.maze.nbColumns; j++) {
                 let pos = new Position(i, j);
-                if (game.maze._wallLayer.hasTile(pos)) {
+                if (this._game.maze._wallLayer.hasTile(pos)) {
                     this.createWall(pos);
                 }
-                if (game.maze._dotLayer.hasTile(pos)) {
-                    this.createDot(pos, game.maze.getDotLayerTile(pos));
+                
+                if (this._game.maze._dotLayer.hasTile(pos)) {
+                    this.createDot(pos, this._game.maze.getDotLayerTile(pos));
                 }
             }
         }
+        this.createPacMan(this._game.maze.pacmanRespawn);
     }
-
+    updateFrame(){
+        $(".pacman").css({"top": `${15 * this._game.pacman.position.row}px`,
+         "left":`${15 * this._game.pacman.position.column}px`});
+    }
+   
+        
     /**
     * Vizualizes a wall in the game.
     * @param {*} pos position to verify the layer.
@@ -42,6 +50,17 @@ class GameView {
             $("#game").append(`<span class='energizer' 
             style='top:${15 * pos.row}px; left:${15 * pos.column}px; '></span>`);
         }
+    }
+    /**
+     * 
+     * @param {*} pos 
+     */
+    createPacMan(pos){
+        
+            $("#game").append(`<span class="pacman"
+             style='top:${15 * pos.row}px;
+              left:${15 * pos.column}px; '></span>`)
+        
     }
 }
 
