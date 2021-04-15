@@ -23,7 +23,7 @@ class Position{
     get column(){return this._column;}
     /**
      * Returns the next position of the spirit with the given direction .
-     * @param {*} dir Direction of the spirit.
+     * @param {Direction} dir Direction of the spirit.
      * @returns Next position in the given direction.
      */
     nextPosition(dir){

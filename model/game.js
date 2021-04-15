@@ -43,7 +43,7 @@ class Game {
                 ghost._choiceNewDirection();
             }
             if (ghost.canEat(this.pacman)) {
-                console.log("Pacman eated by a ghost");
+                this._pacman.hasBeenEaten();
             }
         }
     }

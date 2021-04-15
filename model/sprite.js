@@ -11,9 +11,9 @@ class Sprite extends Component {
     constructor(position, direction, id) {
         super(id);
         this._position = position;
-        this._firstDirection=position;
+        this._spawnPos=position;
         this._direction = direction;
-        this._firstDirection=direction;
+        this._spawnDir=direction;
         this._previousPosition;
         this._askedToChangeDirection = false;
         this._askedDirection;
@@ -72,8 +72,8 @@ class Sprite extends Component {
      */
     respawn(){
         this._isDead=false;
-        this._position=this._firstDirection;
-        this._direction=this._firstDirection;
+        this._position=this._spawnPos;
+        this._direction=this._spawnDir;
     }
 
 

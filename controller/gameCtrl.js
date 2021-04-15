@@ -1,7 +1,7 @@
 /**
  * Controller of the game components.
  */
- class GameCtrl {
+class GameCtrl {
     /**
      * Initializes a new game and it's view.
      */
@@ -14,8 +14,24 @@
     }
     run() {
         this._timer = setInterval(() => {
-        this._game.moveSprites();      
-        this._view.updateFrame();
+            this._game.moveSprites();
+            this._view.updateFrame();
+            this.isEaten();
         }, RUN_INTERVAL);
+    }
+    /**
+     * Checks if the pacman was declared dead,
+     * respawn it, updates it's lives, and also 
+     * it's verified if he's dead(no more lifes left).
+     */
+    isEaten() {
+        if (this._game.pacman.isDead) {
+            this._game.pacman.respawn();
+            this._view.updateLife();
+            if (this._game._pacman.nbLives == 0) {
+                console.log("You have no more lives.");
+                clearInterval(this.timer);
+            }
+        }
     }
 }
