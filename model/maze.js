@@ -24,6 +24,9 @@ class Maze {
                 else if (rawMaze.table[i][j] == 4) {
                     this._pacmanRespawn = new Position(i, j);
                 }
+                else if (rawMaze.table[i][j] == 5){
+                    this._ghostRespawn = new Position(i,j);
+                }
 
             }
         }

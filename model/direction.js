@@ -8,7 +8,7 @@ class Direction{
      * @param {number} deltaRow Row of the direction.
      * @param {number} deltaColumn Column of the direction.
      */
-    constructor(deltaRow,deltaColumn, ){
+    constructor(deltaRow,deltaColumn){
         this._deltaRow=deltaRow;
         this._deltaColumn = deltaColumn;
      
@@ -30,7 +30,6 @@ class Direction{
       
  
     }
-
     //North direction that goes 1 case up.
     Direction.NORTH= new Direction(-1,0);
     //South direction that goes 1 case down.

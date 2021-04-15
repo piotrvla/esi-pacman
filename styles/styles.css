@@ -58,3 +58,19 @@ h1{
     border-radius: 99%;
     position: absolute;
 }
+#Blinky{
+    border: 7.5px solid red;
+    position: absolute;
+}
+#Pinky{
+    border: 7.5px solid pink;
+    position: absolute;
+}   
+#Inky{ 
+    border: 7.5px solid blue;
+    position: absolute;
+}
+#Clyde{
+    border: 7.5px solid orange;
+    position: absolute;
+}

@@ -12,7 +12,7 @@ class Sprite extends Component {
         super(id);
         this._position = position;
         this._direction = direction;
-        this._previousPosition = previousPosition;
+        this._previousPosition;
         this._askedToChangeDirection = false;
         this._askedDirection;
     }
@@ -28,7 +28,7 @@ class Sprite extends Component {
      * Moves the spirit in the given direction.
      */
     move() {
-        this._position=this._position.nextPosition(this._direction);
+        this._position = this._position.nextPosition(this._direction);
     }
     /**
      * Used to let the game know that, 
@@ -45,9 +45,13 @@ class Sprite extends Component {
      */
     changeDirection() {
         if (this._askedToChangeDirection) {
+            this._previousPosition = this.direction;
             this._direction = this._askedDirection;
-            this._askedToChangeDirection=false;
+            this._askedToChangeDirection = false;
         }
+    }
+    notifyIsBlocked() {
+        console.log("elo");
     }
 
 
