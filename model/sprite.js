@@ -11,10 +11,13 @@ class Sprite extends Component {
     constructor(position, direction, id) {
         super(id);
         this._position = position;
+        this._firstDirection=position;
         this._direction = direction;
+        this._firstDirection=direction;
         this._previousPosition;
         this._askedToChangeDirection = false;
         this._askedDirection;
+        this._isDead=false;
     }
     /**
      * @returns {Position}
@@ -24,6 +27,10 @@ class Sprite extends Component {
      * @returns {Position}
      */
     get direction() { return this._direction; }
+    /**
+     * @returns {Boolean}
+     */
+    get isDead(){return this._isDead;}
     /**
      * Moves the spirit in the given direction.
      */
@@ -44,14 +51,29 @@ class Sprite extends Component {
      * for the changement.
      */
     changeDirection() {
-        if (this._askedToChangeDirection) {
+      if(this._askedToChangeDirection){
             this._previousPosition = this.direction;
             this._direction = this._askedDirection;
             this._askedToChangeDirection = false;
         }
     }
     notifyIsBlocked() {
-        console.log("elo");
+        
+    }
+    /**
+     * The pacman has been eated, state of isDead changets to true.
+     */
+    hasBeenEaten(){
+        this._isDead=true;
+    }
+    /**
+     * Respawns the pacman and it's respawn place,
+     *  and it's direction by default.
+     */
+    respawn(){
+        this._isDead=false;
+        this._position=this._firstDirection;
+        this._direction=this._firstDirection;
     }
 
 

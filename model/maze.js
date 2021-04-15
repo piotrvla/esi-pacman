@@ -34,8 +34,8 @@ class Maze {
     }
     /**
      * Returns a wall layer's tile at given position.
-     * @param {Position}
-     * @returns {Tile}Tile at given position.
+     * @param {Position} Position Position to retrieve the tile from the maze.
+     * @returns {Tile} Tile at given position.
      */
     getWallLayerTile(pos) {
         if (!this._wallLayer.contains(pos)) {

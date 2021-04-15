@@ -18,13 +18,12 @@ class Game {
 
     }
     /**
-     * Changes the direction of pacman if needed,
-     * verifies if the move is allowed then moves the pacman,
-     * if it's the case..
+     * Verifies the next position of the pacman is correct, if not the pacman continues it's path.
+     * It's same for the ghost, it continues it's path if no obstacles, otherwise
+     * the ghost is blocked, it must instantly change it's direction.
+     * 
      */
     moveSprites() {
-
-
         if (this._pacman._askedToChangeDirection && this._game.canWalkOn(this._pacman.position.nextPosition(this._pacman._askedDirection))) {
             this.pacman.changeDirection();
             this._pacman.move();
@@ -33,11 +32,15 @@ class Game {
             this._pacman.move();
         }
         for (let ghost of this._ghosts) {
-            if (this._game.canWalkOn(ghost.position.nextPosition(ghost.direction))) {
+            if (ghost._askedToChangeDirection && this._game.canWalkOn(ghost.position.nextPosition(ghost._askedDirection))) {
+                ghost.notifyIsBlocked();
+                ghost.move();
+            }
+            else if (this._game.canWalkOn(ghost.position.nextPosition(ghost.direction))) {
                 ghost.move();
             }
             else {
-                ghost.notifyIsBlocked();
+                ghost._choiceNewDirection();
             }
             if (ghost.canEat(this.pacman)) {
                 console.log("Pacman eated by a ghost");
