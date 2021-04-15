@@ -40,8 +40,12 @@ h1{
 
 }
 .pacdot{
-    border: 7.5px solid white;
-    border-radius: 99%;
+    border: solid white;
+    background-color: white;
+    width: 4px;
+    height: 5px;
+    margin:2.5px;
+    border-radius: 90%;
     position: absolute;
 }
 .energizer{

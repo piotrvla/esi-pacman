@@ -12,6 +12,7 @@ class Sprite extends Component {
         super(id);
         this._position = position;
         this._direction = direction;
+        this._previousPosition = previousPosition;
         this._askedToChangeDirection = false;
         this._askedDirection;
     }
@@ -48,5 +49,6 @@ class Sprite extends Component {
             this._askedToChangeDirection=false;
         }
     }
+
 
 }

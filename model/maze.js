@@ -5,7 +5,7 @@ class Maze {
     /**
      * Creates 2 layers, wall layer also dot layer and fill them with their values.
      * Needs rawMaze to be initialized.
-     * @param {*} rawMaze the raw maze.
+     * @param {rawMaze} rawMaze the raw maze.
      */
     constructor(rawMaze) {
         this._wallLayer = new Layer(rawMaze.table.length, rawMaze.table[0].length);
@@ -31,7 +31,8 @@ class Maze {
     }
     /**
      * Returns a wall layer's tile at given position.
-     * @returns Tile at given position.
+     * @param {Position}
+     * @returns {Tile}Tile at given position.
      */
     getWallLayerTile(pos) {
         if (!this._wallLayer.contains(pos)) {
@@ -41,7 +42,8 @@ class Maze {
     }
     /**
      * Returns a dot layer's tile at given position.
-     * @returns Tile at given position.
+     * @param {Position}
+     * @returns {Tile} Tile at given position.
      */
     getDotLayerTile(pos) {
         if (!this._dotLayer.contains(pos)) {
@@ -56,7 +58,7 @@ class Maze {
      * @returns {Boolean} True if can walk on, false if not.
      */
     canWalkOn(position) {
-        if ( (this._dotLayer.contains(position) && !this._wallLayer.hasTile(position)) ||this._dotLayer.hasTile(position)) {
+        if ( !this._wallLayer.hasTile(position) && this._dotLayer.contains(position)) {
             return (true);
         }
         return false;

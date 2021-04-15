@@ -12,11 +12,12 @@ class Game {
     }
     /**
      * Changes the direction of pacman if needed,
-     * then moves the pacman.
+     * verifies if the move is allowed then moves the pacman,
+     * if it's the case..
      */
     moveSprites() {
         this.pacman.changeDirection();
-        if(this._game.canWalkOn(this._pacman.position)){
+        if(this._game.canWalkOn(this._pacman.position.nextPosition(this._pacman.direction))){
         this._pacman.move();
         }
     }

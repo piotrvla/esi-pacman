@@ -3,7 +3,7 @@
  */
 class PacmanCtrl {
     /**
-     * Need a Pacman to be initialized.
+     * Needs a Pacman to be initialized.
      * @param {Pacman} pacman 
      */
     constructor(pacman){

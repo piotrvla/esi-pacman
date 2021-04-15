@@ -4,7 +4,7 @@
 class GameView {
     /**
      * Need the game as parameter to be initialized.
-     * @param {*} game 
+     * @param {Game} game 
      */
      constructor(game) {
         this._game = game;
@@ -15,7 +15,7 @@ class GameView {
                     this.createWall(pos);
                 }
                 
-                if (this._game.maze._dotLayer.hasTile(pos)) {
+                if (this._game.maze._dotLayer.hasTile(pos)) {pos
                     this.createDot(pos, this._game.maze.getDotLayerTile(pos));
                 }
             }
@@ -23,43 +23,44 @@ class GameView {
         this.createPacMan(this._game.maze.pacmanRespawn);
     }
     updateFrame(){
-        $(".pacman").css({"top": `${15 * this._game.pacman.position.row}px`,
-         "left":`${15 * this._game.pacman.position.column}px`});
+        $(".pacman").css({"top": `${TILE_SIZE * this._game.pacman.position.row}px`,
+         "left":`${TILE_SIZE * this._game.pacman.position.column}px`});
     }
    
         
     /**
     * Vizualizes a wall in the game.
-    * @param {*} pos position to verify the layer.
+    * @param {Position} pos position to verify the layer.
     */
     createWall(pos) {
         $("#game").append(`<span class='wall' 
-        style='top:${15 * pos.row}px; left:${15 * pos.column}px; '></span>`);
+        style='top:${TILE_SIZE * pos.row}px; left:${TILE_SIZE * pos.column}px; '></span>`);
     }
     /**
      * Vizualizes a pac dot or a energizer dot depending on it's id and
      * the value of isEnergizer.
-     * @param {*} pos position to verify the layer.
+     * @param {Position} pos position to verify the layer.
      */
     createDot(pos, tile) {
         if (tile.id == "dot" && !tile.isEnergizer) {
             $("#game").append(`<span class='pacdot' 
-        style='top:${15 * pos.row}px; left:${15 * pos.column}px; '></span>`);
+        style='top:${TILE_SIZE * pos.row}px; left:${TILE_SIZE * pos.column}px; '></span>`);
         }
         if (tile.id == "energizer" && tile.isEnergizer == true) {
             $("#game").append(`<span class='energizer' 
-            style='top:${15 * pos.row}px; left:${15 * pos.column}px; '></span>`);
+            style='top:${TILE_SIZE * pos.row}px; left:${TILE_SIZE * pos.column}px; '></span>`);
         }
     }
     /**
-     * 
-     * @param {*} pos 
+     * Creates the pacman at given position in the parameter.
+     * It wil be it's respawn place by default.
+     * @param {Position} pos 
      */
     createPacMan(pos){
         
             $("#game").append(`<span class="pacman"
-             style='top:${15 * pos.row}px;
-              left:${15 * pos.column}px; '></span>`)
+             style='top:${TILE_SIZE * pos.row}px;
+              left:${TILE_SIZE * pos.column}px; '></span>`)
         
     }
 }
