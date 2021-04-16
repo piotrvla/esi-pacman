@@ -14,7 +14,8 @@ class Game {
         this._inky = new Ghost(this._game._ghostRespawn, Direction.EAST, "Inky");
         this._clyde = new Ghost(this._game._ghostRespawn, Direction.WEST, "Clyde")
         this._ghosts = [this._blinky, this._pinky, this._inky, this._clyde];
-
+        this._score=0;
+      
 
     }
     /**
@@ -46,6 +47,16 @@ class Game {
                 this._pacman.hasBeenEaten();
             }
         }
+
+        if(this._game.canPick(this._pacman.position)){
+            this._removedDot = this._game.pick(this._pacman.position);
+            if(this._removedDot.isEnergizer){
+                this._score+=100;
+            }
+            else{
+                this._score+=10;
+            }
+        }
     }
     /**
      * Returns the game's maze.
@@ -57,4 +68,12 @@ class Game {
      * @returns {Pacman} The pacman.
      */
     get pacman() { return this._pacman; }
+    /**
+     * 
+     */
+    get score(){return this._score;}
+    /**
+     * 
+     */
+    get removedDot(){return this._removedDot;}
 }

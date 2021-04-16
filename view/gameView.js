@@ -16,7 +16,7 @@ class GameView {
                 }
 
                 if (this._game.maze._dotLayer.hasTile(pos)) {
-                    pos
+                    
                     this.createDot(pos, this._game.maze.getDotLayerTile(pos));
                 }
             }
@@ -46,6 +46,8 @@ class GameView {
             "top": `${TILE_SIZE * this._game._clyde.position.row}px`,
             "left": `${TILE_SIZE * this._game._clyde.position.column}px`
         });
+        this.dotHaveBeenEaten();
+        this.updateScore();
 
     }
     /**
@@ -69,12 +71,12 @@ createWall(pos) {
  * @param {Position} pos position to verify the layer.
  */
 createDot(pos, tile) {
-    if (tile.id == "dot" && !tile.isEnergizer) {
-        $("#game").append(`<span class='pacdot' 
+    if (tile.id == "dot"+pos.row+"-"+pos.column && !tile.isEnergizer) {
+        $("#game").append(`<span class='pacdot' id='dot${pos.row}-${pos.column}'
         style='top:${TILE_SIZE * pos.row}px; left:${TILE_SIZE * pos.column}px; '></span>`);
     }
-    if (tile.id == "energizer" && tile.isEnergizer == true) {
-        $("#game").append(`<span class='energizer' 
+    if (tile.id == "energizer"+pos.row+"-"+pos.column&& tile.isEnergizer) {
+        $("#game").append(`<span class='energizer' id='energizer${pos.row}-${pos.column}'
             style='top:${TILE_SIZE * pos.row}px; left:${TILE_SIZE * pos.column}px; '></span>`);
     }
 }
@@ -108,6 +110,12 @@ createLives(){
     for (let i = 0; i < PACMAN_LIVES; i++) {
         $(`#lives`).append(`<span class="lives"></div>`)
     }
+}
+dotHaveBeenEaten(){
+    $(`#${this._game._removedDot.id}`).remove();
+}
+updateScore(){
+    $(`#currentScore`).text(`CURRENT SCORE: ${this._game.score}`)
 }
 }
 

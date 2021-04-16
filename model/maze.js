@@ -10,22 +10,25 @@ class Maze {
     constructor(rawMaze) {
         this._wallLayer = new Layer(rawMaze.table.length, rawMaze.table[0].length);
         this._dotLayer = new Layer(rawMaze.table.length, rawMaze.table[0].length);
+        this._nbDots = 0;
         for (let i = 0; i < rawMaze.table.length; i++) {
             for (let j = 0; j < rawMaze.table[0].length; j++) {
                 if (rawMaze.table[i][j] == 1) {
-                    this._wallLayer.setTile(new Position(i, j), new Wall("wall"));
+                    this._wallLayer.setTile(new Position(i, j), new Wall("wall"+i+"-"+j));
                 }
                 else if (rawMaze.table[i][j] == 2) {
-                    this._dotLayer.setTile(new Position(i, j), new Dot("dot", false));
+                    this._dotLayer.setTile(new Position(i, j), new Dot("dot"+i+"-"+j, false));
+                    this._nbDots++;
                 }
                 else if (rawMaze.table[i][j] == 3) {
-                    this._dotLayer.setTile(new Position(i, j), new Dot("energizer", true));
+                    this._dotLayer.setTile(new Position(i, j), new Dot("energizer"+i+"-"+j, true));
+                    this._nbDots++;
                 }
                 else if (rawMaze.table[i][j] == 4) {
                     this._pacmanRespawn = new Position(i, j);
                 }
-                else if (rawMaze.table[i][j] == 5){
-                    this._ghostRespawn = new Position(i,j);
+                else if (rawMaze.table[i][j] == 5) {
+                    this._ghostRespawn = new Position(i, j);
                 }
 
             }
@@ -61,7 +64,7 @@ class Maze {
      * @returns {Boolean} True if can walk on, false if not.
      */
     canWalkOn(position) {
-        if ( !this._wallLayer.hasTile(position) && this._dotLayer.contains(position)) {
+        if (!this._wallLayer.hasTile(position) && this._dotLayer.contains(position)) {
             return (true);
         }
         return false;
@@ -73,10 +76,7 @@ class Maze {
      * @returns {Boolean} True if can be picked, false if not.
      */
     canPick(position) {
-        if (this._dotLayer.hasTile(position) && !this._wallLayer.hasTile(position)) {
-            return true;
-        }
-        return false;
+        return this._dotLayer.hasTile(position) && this._dotLayer.contains(position);
     }
     /**
      * Pickes the tile at the given position.
@@ -84,10 +84,13 @@ class Maze {
      * @returns {Tile} Tile at the given position.
      */
     pick(position) {
-        if (this.canPick(position)) {
-            return this.getDotLayerTile(position);
-        }
-        throw "Nothing to pick";
+        let pickedDot = this._dotLayer.getTile(position);
+        this._dotLayer.setTile(position, undefined);
+        this._nbDots--;
+        return pickedDot;
+    }
+    isEmpty() {
+        return this._nbDots == 0;
     }
     /**
      * We suppose that two layers are are of the same size,
