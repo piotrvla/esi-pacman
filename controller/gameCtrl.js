@@ -27,10 +27,16 @@ class GameCtrl {
     isEaten() {
         if (this._game.pacman.isDead) {
             this._game.pacman.respawn();
+            this._game._blinky.respawn();
+            this._game._pinky.respawn();
+            this._game._inky.respawn();
+            this._game._clyde.respawn();
             this._view.updateLife();
             if (this._game._pacman.nbLives == 0) {
                 console.log("You have no more lives.");
-                clearInterval(this.timer);
+                this._game.saveScore();
+                this._view.displayGameOver();
+                clearInterval(this._timer);
             }
         }
     }

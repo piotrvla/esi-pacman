@@ -14,9 +14,20 @@ class Game {
         this._inky = new Ghost(this._game._ghostRespawn, Direction.EAST, "Inky");
         this._clyde = new Ghost(this._game._ghostRespawn, Direction.WEST, "Clyde")
         this._ghosts = [this._blinky, this._pinky, this._inky, this._clyde];
-        this._score=0;
-      
+        this._score = 0;
+        this._highScore = localStorage.getItem("highscore");
+        this._isHighScoreInitialized();
 
+
+    }
+    /**
+     * Verifies if highscore contains any value, if not
+     * it's initialised at 0.
+     */
+    _isHighScoreInitialized() {
+        if (!this._highScore) {
+            this._highScore = 0;
+        }
     }
     /**
      * Verifies the next position of the pacman is correct, if not the pacman continues it's path.
@@ -48,14 +59,25 @@ class Game {
             }
         }
 
-        if(this._game.canPick(this._pacman.position)){
+        if (this._game.canPick(this._pacman.position)) {
             this._removedDot = this._game.pick(this._pacman.position);
-            if(this._removedDot.isEnergizer){
-                this._score+=100;
+            if (this._removedDot.isEnergizer) {
+                this._score += 100;
             }
-            else{
-                this._score+=10;
+            else {
+                this._score += 10;
             }
+        }
+    }
+    /**
+     * Saves the highscore if the score 
+     * is bigger than the current highScore
+     */
+    saveScore(){
+        if(this._highScore<this._score){
+            this._highScore=this._score;
+            localStorage.setItem("highscore",`${this._highScore}`)
+           
         }
     }
     /**
@@ -69,11 +91,18 @@ class Game {
      */
     get pacman() { return this._pacman; }
     /**
-     * 
+     * Returns current score
+     * @returns {Number}
      */
-    get score(){return this._score;}
+    get score() { return this._score; }
     /**
-     * 
+     * Returns removed tile.
+     * @returns {Tile}
      */
-    get removedDot(){return this._removedDot;}
+    get removedDot() { return this._removedDot; }
+    /**
+     * Returns current high score
+     * @returns {Number}
+     */
+    get highScore() { return this._highScore; }
 }

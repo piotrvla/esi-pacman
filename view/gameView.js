@@ -48,7 +48,7 @@ class GameView {
         });
         this.dotHaveBeenEaten();
         this.updateScore();
-
+        this.displayGameOver();
     }
     /**
      * Deletes one of the lives of the pacman.
@@ -92,6 +92,11 @@ createPacMan(pos) {
               left:${TILE_SIZE * pos.column}px; '></span>`)
 
 }
+/**
+ * Creates ghosts inside the maze, all of them are
+ * spawned in the same position.
+ * @param {Position} pos 
+ */
 createGhosts(pos) {
     $("#game").append(`<span id="Blinky"
          style='top:${TILE_SIZE * pos.row}px;
@@ -106,16 +111,32 @@ createGhosts(pos) {
         style='top:${TILE_SIZE * pos.row}px;
          left:${TILE_SIZE * pos.column}px; '></span>`);
 }
+/**
+ * Creates n lives of pacman. 
+ * PACMAN_LIVES is a const, free to change.
+ */
 createLives(){
     for (let i = 0; i < PACMAN_LIVES; i++) {
         $(`#lives`).append(`<span class="lives"></div>`)
     }
 }
+/**
+ * Removes the dot that have been eated.
+ */
 dotHaveBeenEaten(){
     $(`#${this._game._removedDot.id}`).remove();
 }
+/**
+ * Updates current score.
+ */
 updateScore(){
     $(`#currentScore`).text(`CURRENT SCORE: ${this._game.score}`)
+}
+/**
+ * Displays the current highScore at the start of the game.
+ */
+displayGameOver(){
+    $(`#highScore`).text(`HIGH SCORE: ${this._game.highScore}`)
 }
 }
 
