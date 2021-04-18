@@ -81,6 +81,24 @@ class Game {
         }
     }
     /**
+     * Verifies if there's any dot left, if not the current level has ended.
+     * @returns {Boolean}
+     */
+    lvlSucceed(){
+        return this._game.isEmpty();
+    }
+    /**
+     * New maze is created, pacman is respawned,
+     * and also ghosts are respawned.
+     */
+    nextLevel(){
+        this._game = new Maze(RAW_MAZE);
+        this._pacman.respawn();
+        for(let ghost of this._ghosts){
+            ghost.respawn();
+        }
+    }
+    /**
      * Returns the game's maze.
      * @returns {Maze} The maze.
      */

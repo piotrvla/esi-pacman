@@ -17,6 +17,7 @@ class GameCtrl {
             this._game.moveSprites();
             this._view.updateFrame();
             this.isEaten();
+            this.nextLevel()
         }, RUN_INTERVAL);
     }
     /**
@@ -38,6 +39,17 @@ class GameCtrl {
                 this._view.displayGameOver();
                 clearInterval(this._timer);
             }
+        }
+    }
+    /**
+     * Verifies if the level have succeed, 
+     * if yes new maze is created, and also 
+     * position of every sprite is reseted.
+     */
+    nextLevel(){
+        if(this._game.lvlSucceed()){
+            this._game.nextLevel();
+            this._view.nextLevel();
         }
     }
 }
