@@ -71,7 +71,7 @@ class Maze {
 
     }
     /**
-     * Verifies if the dot can be pick at the given position.
+     * Verifies if the dot can be picked at the given position.
      * @param {Position} position Position to check.
      * @returns {Boolean} True if can be picked, false if not.
      */
@@ -79,7 +79,8 @@ class Maze {
         return this._dotLayer.hasTile(position) && this._dotLayer.contains(position);
     }
     /**
-     * Pickes the tile at the given position.
+     * Pickes the tile at the given position, removes it from the gameboard.
+     * and also decreases the number of dot left.
      * @param {Position} position 
      * @returns {Tile} Tile at the given position.
      */
@@ -89,6 +90,10 @@ class Maze {
         this._nbDots--;
         return pickedDot;
     }
+    /**
+     * Verifies if there's any dot left in the gameboard.
+     * @returns {Boolean} true if empty, if not false.
+     */
     isEmpty() {
         return this._nbDots == 0;
     }
