@@ -6,12 +6,16 @@ class GameView {
      * Need the game as parameter to be initialized.
      * @param {Game} game 
      */
-    constructor(game) {
+    constructor(game, gameCtrl) {
         this._game = game;
+        this._gameCtrl=gameCtrl;
         this.createGameBoard();
         this.createPacMan(this._game.maze._pacmanRespawn);
         this.createGhosts(this._game.maze._ghostRespawn);
         this.createLives();
+        $(`#lives`).before(`<div id="play"><h1 id="playMessage">PRESS START TO PLAY</h1>
+        <button id="playButton">START</button>
+        </div>`)
     }
     updateFrame() {
         $(".pacman").css({
@@ -142,12 +146,21 @@ class GameView {
     displayGameOver() {
         $(`#highScore`).text(`HIGH SCORE: ${this._game.highScore}`)
     }
+    /**
+     * Passes to the next level in the maze by creatin a new maze,
+     * restarting all position(theirs default spawn places.).
+     */
     nextLevel() {
         $(`#game`).remove();
         $(`#lives`).before(`<div id="game"></div>`);
         this.createGameBoard();
         this.createGhosts(this._game.maze._ghostRespawn);
         this.createPacMan(this._game.maze._pacmanRespawn);
+    }
+    startGame(){
+        $(`#play`).hide();
+        this._gameCtrl. startHasBeenRequested();
+        
     }
 }
 

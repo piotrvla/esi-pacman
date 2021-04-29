@@ -35,20 +35,32 @@
     <script>
         $(document).ready(function () {
             gameControl = new GameCtrl();
+            $(`#playButton`).click(function () {
+                gameControl._view.startGame();
+
+            });
         });
     </script>
     <main>
+
         <div id="gameBoard">
+
             <div id="scores">
                 <h1 id="highScore">HIGH SCORE:</h1>
                 <h1 id="currentScore">CURRENT SCORE:0</h1>
             </div>
+
+
             <div id="game">
+
             </div>
+
             <div id="lives">
 
             </div>
+
         </div>
+
     </main>
 </body>
 

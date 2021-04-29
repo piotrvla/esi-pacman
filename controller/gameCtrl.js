@@ -7,10 +7,10 @@ class GameCtrl {
      */
     constructor() {
         this._game = new Game(RAW_MAZE);
-        this._view = new GameView(this._game);
+        this._view = new GameView(this._game, this);
         this._pacmanCtrl = new PacmanCtrl(this._game.pacman);
         this._pacmanView = new PacmanView(this._pacmanCtrl);
-        this.run();
+       
     }
     run() {
         this._timer = setInterval(() => {
@@ -52,4 +52,8 @@ class GameCtrl {
             this._view.nextLevel();
         }
     }
+    startHasBeenRequested(){
+        this.run();
+    }
+
 }
