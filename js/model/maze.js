@@ -109,5 +109,9 @@ class Maze {
     * @returns number of columns of the layer.
     */
     get nbColumns() { return this._dotLayer._nbColumns; }
+    /**
+     * Returns pacman's respawn.
+     * @returns {Position}
+     */
     get pacmanRespawn() { return this._pacmanRespawn; }
 }

@@ -157,9 +157,13 @@ class GameView {
         this.createGhosts(this._game.maze._ghostRespawn);
         this.createPacMan(this._game.maze._pacmanRespawn);
     }
+    /**
+     * Starts a game on user's demand.
+     *
+     */
     startGame(){
         $(`#play`).hide();
-        this._gameCtrl. startHasBeenRequested();
+        this._gameCtrl.startHasBeenRequested();
         
     }
 }

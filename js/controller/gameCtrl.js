@@ -52,6 +52,10 @@ class GameCtrl {
             this._view.nextLevel();
         }
     }
+    /**
+     * User has requested a start of the game, then game is started
+     * by running run method.
+     */
     startHasBeenRequested(){
         this.run();
     }

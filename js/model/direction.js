@@ -15,12 +15,12 @@ class Direction{
         
     }
     /**
-     * Returns the row.
+     * Returns current row.
      * @returns {number}
      */
     get deltaRow(){return this._deltaRow;}
     /**
-     * Returns the column.
+     * Returns current column.
      * @returns {number}
      */
     get deltaColumn(){return this._deltaColumn;}
