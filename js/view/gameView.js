@@ -8,7 +8,7 @@ class GameView {
      */
     constructor(game, gameCtrl) {
         this._game = game;
-        this._gameCtrl=gameCtrl;
+        this._gameCtrl = gameCtrl;
         this.createGameBoard();
         this.createPacMan(this._game.maze._pacmanRespawn);
         this.createGhosts(this._game.maze._ghostRespawn);
@@ -42,7 +42,7 @@ class GameView {
         this.updateScore();
         this.displayGameOver();
     }
-    createGameBoard(){
+    createGameBoard() {
         for (let i = 0; i < this._game.maze.nbRows; i++) {
             for (let j = 0; j < this._game.maze.nbColumns; j++) {
                 let pos = new Position(i, j);
@@ -62,8 +62,16 @@ class GameView {
      * Deletes one of the lives of the pacman.
      */
     updateLife() {
-        $('#lives').find('span').last().remove();
+        
+            $(`.lives`).remove();
+            for (let i = 0; i < this._game._pacman.nbLives; i++) {
+                $(`#lives`).append(`<span class="lives"></div>`)
+            
+        }
+
+
     }
+
 
     /**
     * Vizualizes a wall in the game.
@@ -161,10 +169,10 @@ class GameView {
      * Starts a game on user's demand.
      *
      */
-    startGame(){
+    startGame() {
         $(`#play`).hide();
         this._gameCtrl.startHasBeenRequested();
-        
+
     }
 }
 

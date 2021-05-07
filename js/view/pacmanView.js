@@ -23,7 +23,10 @@
                     break;
                 case "ArrowDown":
                     pacmanCtrl.askToChangeDirection(Direction.SOUTH);
-             
+                    break;
+                case "C":
+                case "c":
+                    pacmanCtrl.addLife();
                     break;
             }
         });

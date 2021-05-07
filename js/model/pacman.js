@@ -20,4 +20,7 @@ class Pacman extends Sprite {
         this._nbLives--;
         this._isDead = true;
     }
+    addLife(){
+        this._nbLives++;
+    }
 }

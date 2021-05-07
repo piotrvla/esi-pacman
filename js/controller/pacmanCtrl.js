@@ -17,5 +17,8 @@ class PacmanCtrl {
     askToChangeDirection(direction){
         this._pacman.askToChangeDirection(direction);
     }
+    addLife(){
+        this._pacman.addLife();
+    }
 }
 

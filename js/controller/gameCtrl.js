@@ -17,6 +17,7 @@ class GameCtrl {
             this._game.moveSprites();
             this._view.updateFrame();
             this.isEaten();
+            this._view.updateLife();
             this.nextLevel()
         }, RUN_INTERVAL);
     }
@@ -32,7 +33,7 @@ class GameCtrl {
             this._game._pinky.respawn();
             this._game._inky.respawn();
             this._game._clyde.respawn();
-            this._view.updateLife();
+            
             if (this._game._pacman.nbLives == 0) {
                 console.log("You have no more lives.");
                 this._game.saveScore();
